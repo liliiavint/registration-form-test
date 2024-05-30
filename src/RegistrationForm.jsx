@@ -177,14 +177,14 @@ export function RegistrationForm() {
         return true;
     }
 
-    const minPasswordLength = 8;
+    const minPasswordLength = 4;
 
     function isValidPassword() {
         if (!password.trim()) {
             return "Password is required.";         
         }
         if (password.length < minPasswordLength) {
-            return "The passwords must be at least 8 characters.";
+            return "The passwords must be at least 4 characters.";
         }
 
         return true;
@@ -239,23 +239,23 @@ export function RegistrationForm() {
           <form onSubmit={handleFormSubmit} className={style.context}>
               <div className={style.formRow}>
                   <label className={style.label} htmlFor="">Your name</label>
-                  <input value={username} onChange={handleUsernameChange} className={style.input} type="text" placeholder="First and last name" />
+                  <input value={username} onChange={handleUsernameChange} className={style.input} type="text" placeholder="First and last name" disabled={isSubmitted}/>
               </div>
               <div className={style.formRow}>
                   <label className={style.label} htmlFor="">Email</label>
-                  <input value={email} onChange={handleEmailChange} className={style.input} type="email" placeholder="" />                  
+                  <input value={email} onChange={handleEmailChange} className={style.input} type="email" placeholder="" disabled={isSubmitted}/>                  
               </div>
               <div className={style.formRow}>
                   <label className={style.label} htmlFor="">Password</label>
-                  <input value={password} onChange={handlePasswordChange} className={style.input} type="password" placeholder="at least 8 charachters" />
+                  <input value={password} onChange={handlePasswordChange} className={style.input} type="password" placeholder="at least 4 charachters" disabled={isSubmitted}/>
                   <div className={style.minPassword}>
                       <i className={style.blue}><TiInfoLarge size="1.5rem" /> </i>
-                      <p>Passwords must be at least 8 characters.</p>
+                      <p>Passwords must be at least 4 characters.</p>
                   </div>
               </div>
               <div className={style.formRow}>
                   <label className={style.label} htmlFor="">Re-enter password</label>
-                  <input value={repeatPassword} onChange={handleRepeatPasswordChange} className={style.input} type="password" placeholder=" " />
+                  <input value={repeatPassword} onChange={handleRepeatPasswordChange} className={style.input} type="password" placeholder=" " disabled={isSubmitted}/>
               </div>
                 <div className={style.formRow}>
                 <label  className={style.label}>Date of Birth:</label>
@@ -265,6 +265,7 @@ export function RegistrationForm() {
                     name="dob"
                     value={formData.dob}
                     onChange={handleChange}
+                    disabled={isSubmitted}
                 />
                 {/* {errors.dob && <p className="error">{errors.dob}</p>} */}
                 </div>
