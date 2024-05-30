@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TiInfoLarge } from 'react-icons/ti';
 import { BiError } from 'react-icons/bi';
+import { FaCheck } from 'react-icons/fa';
 import style from './App.module.css';
 
 export function RegistrationForm() {
@@ -19,8 +20,11 @@ export function RegistrationForm() {
         username: '',
         email: '',
         password: '',
+        repeatPassword: '',
         dob: ''
     });
+
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const [errors, setErrors] = useState({});
 
@@ -58,6 +62,7 @@ export function RegistrationForm() {
     };
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        setIsSubmitted(true);
 
         const usernameErrorValue = isValidUsername(username);
         const emailErrorValue = isValidEmail(email);
@@ -200,7 +205,7 @@ export function RegistrationForm() {
     {(emailErr || usernameErr || passwordErr || repeatPasswordErr || errors.dob) &&
         <div className={style.error}>
             <div>
-                <i className={style.red}><BiError size="2rem" /> </i>
+                <i className={style.red}><BiError size="5rem" /> </i>
             </div>
             <div>
                 <h4 className={style.redTitle}>There was a problem</h4>
@@ -215,17 +220,21 @@ export function RegistrationForm() {
         </div>
     }
     {/* Entered Data */}
-    {username || email || password || repeatPassword ?
-        <div>
-            <h4 className={style.redTitle}>Your data has been successfully registered:</h4>
-            <ul>
-                {username && <li className={style.errorLi}>Username: {username}</li>}
-                {email && <li className={style.errorLi}>Email: {email}</li>}
-                {formData.dob && <li className={style.errorLi}>Date of Birth: {formData.dob}</li>}
-            </ul>
-        </div>
-        : null
-    }
+    {isSubmitted && !emailErr && !usernameErr && !passwordErr && !repeatPasswordErr && !errors.dob &&(
+            <div className={style.error}>
+                <div>
+                    <i className={style.red}><FaCheck icon="fa-duotone fa-check" size="3rem" /></i>
+                </div>
+                <div>
+                    <h4 className={style.redTitle}>Your data has been successfully registered:</h4>
+                    <ul>
+                        {username && <li className={style.errorLi}>Username: {username}</li>}
+                        {email && <li className={style.errorLi}>Email: {email}</li>}
+                        {formData.dob && <li className={style.errorLi}>Date of Birth: {formData.dob}</li>}
+                    </ul>
+                </div>
+            </div>
+            )}
     <div className={style.form}>
           <form onSubmit={handleFormSubmit} className={style.context}>
               <div className={style.formRow}>
@@ -257,7 +266,7 @@ export function RegistrationForm() {
                     value={formData.dob}
                     onChange={handleChange}
                 />
-                {errors.dob && <p className="error">{errors.dob}</p>}
+                {/* {errors.dob && <p className="error">{errors.dob}</p>} */}
                 </div>
               <div className={style.formRow}>
                   <button className={`${style.button} ${style.textButton}`}  type="submit">Create your account</button>
