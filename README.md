@@ -79,10 +79,3 @@ This demo project is designed with a simplistic user registration.
 
 Liliia: [Github](https://github.com/liliiavint)
 
-## ⚠️ License
-
-Distributed under the MIT License. See LICENSE.txt for more information.
-
-## 🔗 Other resources
-
-No other resources.
