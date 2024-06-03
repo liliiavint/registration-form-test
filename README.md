@@ -5,13 +5,15 @@
 
 # Testing registration form
 
-_test project_
+_project about testing e2e registration form_
 
 <br>
 
 ## 🌟 About
 
-This project is for educational porpuses only. Pull request are welcome, but priority for project authors! Thank you for your cooperation!
+This project is for educational porpuses only. 
+In the studying process, I wrote tests that involve the use of browser automation to simulate the behavior of real users, effectively reproducing the steps a visitor can take when filling out a registration form.
+Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
 Site published at: https://liliiavint.github.io/48-registration-form-test/
 
@@ -58,7 +60,11 @@ Would like to run this project locally? Open terminal and follow these steps:
 4. Run the server
     ```sh
     npm run dev
+
+When you visit  http://localhost:5173/ in your browser, you will be greeted with the application homepage:
     ```
+    ![alt text](image.png)
+This demo project is designed with a simplistic user registration.
 ### 🧪 Running tests
 
  Test e2e
