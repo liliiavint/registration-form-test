@@ -69,9 +69,9 @@ When you visit  http://localhost:5173/ in your browser, you will be greeted with
 This demo project is designed with a simplistic user registration.
 ```
 ## 🧪 Running tests
-```
+
  # Test e2e
-   ```
+
     npm run test
 
 
