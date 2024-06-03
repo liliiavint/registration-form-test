@@ -199,8 +199,7 @@ export function RegistrationForm() {
 
     return (
     <div className={style.center}>
-        <div className={style.main}>
-            
+        <div className={style.main}>        
             {/* ERROR */}
     {(emailErr || usernameErr || passwordErr || repeatPasswordErr || errors.dob) &&
         <div className={style.error}>
@@ -267,6 +266,7 @@ export function RegistrationForm() {
                     onChange={handleChange}
                     disabled={isSubmitted}
                 />
+                <p>Registration is only for users, who are over 18 years old.</p>
                 {/* {errors.dob && <p className="error">{errors.dob}</p>} */}
                 </div>
               <div className={style.formRow}>

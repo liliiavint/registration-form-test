@@ -13,7 +13,7 @@ _test project_
 
 This project is for educational porpuses only. Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
-Site published at: https://liliiavint.github.io/48-grupe-dom-intro/
+Site published at: https://liliiavint.github.io/48-registration-form-test/
 
 Design: none
 
@@ -24,29 +24,13 @@ Design: none
 - GitHub Pages: Hosting platform for static websites.
 - ES6++ (JavaScript): Usage of modern JavaScript features.
 
-## 🧰 Getting Started
-Prerequisites: Node.js, Cypress, Git
-Running Locally:
-Clone the repository.
-Install NPM packages.
-Run the server locally using npm run dev.
-Running Tests: Cypress is mentioned as a testing framework, but it's noted that there are no tests for this project.
-
 ### 💻 Prerequisites
 
 Node.js - _download and install_
-
 ```
 https://nodejs.org
 ```
-Cypress - _install_
-
-```
-npm install cypress --save-dev
-```
-
 Git - _download and install_
-
 ```
 https://git-scm.com
 ```
@@ -66,8 +50,12 @@ Would like to run this project locally? Open terminal and follow these steps:
     or
     ```sh
     npm install
+
+3. Cypress - _install_
     ```
-3. Run the server
+    npm install cypress --save-dev
+
+4. Run the server
     ```sh
     npm run dev
     ```
@@ -77,7 +65,7 @@ Would like to run this project locally? Open terminal and follow these steps:
    ```
     npm run test
 
-## 🎅 Authors
+### 🎅Authors
 
 Liliia: [Github](https://github.com/liliiavint)
 
