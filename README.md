@@ -62,19 +62,27 @@ Would like to run this project locally? Open terminal and follow these steps:
     npm run dev
 
 When you visit  http://localhost:5173/ in your browser, you will be greeted with the application homepage:
-
+    ```
     ![alt text](image.png)
 
-
+```
 This demo project is designed with a simplistic user registration.
-
+```
 ## 🧪 Running tests
-
- ### Test e2e
+```
+ # Test e2e
    ```
     npm run test
-```
+
 
 ### 🎅 Authors
 
 Liliia: [Github](https://github.com/liliiavint)
+
+## ⚠️ License
+
+Distributed under the MIT License. See LICENSE.txt for more information.
+
+## 🔗 Other resources
+
+No other resources.
