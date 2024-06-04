@@ -15,7 +15,7 @@ This project is for educational porpuses only.
 In the studying process, I wrote tests that involve the use of browser automation to simulate the behavior of real user, effectively reproducing the steps a visitor can take when filling out a registration form.
 Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
-Site published at: https://liliiavint.github.io/48-registration-form-test/
+Site published at: https://liliiavint.github.io/registration-form-test/
 
 Design: none
 
