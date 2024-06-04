@@ -123,5 +123,6 @@ it('The Invalid Date of Birth users.', () => {
   cy.get('#error h4').should('contain.text', 'There was a problem:');
   cy.get('#error ul li:nth-child(1)').should('contain.text', 'Invalid Date of Birth.' );
 });
+
 });
 
