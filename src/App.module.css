@@ -1,11 +1,12 @@
 .main{
   display: flex;
   flex-direction: column;
-  max-width: 23rem;
+  width: 23rem;
   margin: 2rem auto;
   gap: 1.5rem;
   color: #111;
   font-family: Arial, sans-serif;
+ 
 }
 .context{
   display: flex;
