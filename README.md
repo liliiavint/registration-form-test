@@ -71,9 +71,11 @@ This demo project is designed with a simplistic user registration.
 ## 🧪 Running tests
 
  # Test e2e
-
+    lokaly doing test
     npm run test
 
+    doing with gihub action
+    npm run test:ci
 
 ### 🎅 Authors
 

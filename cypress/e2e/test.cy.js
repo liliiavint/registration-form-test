@@ -56,7 +56,7 @@ describe('visible component display', () => {
       cy.visit('http://localhost:5173/')
     })
   
-    it('User is able to fill registration form ', () => {
+    it('User is able to fill registration form and seeing a successful message', () => {
       cy.get('#username').type(names);
       cy.get('#email').type(email);
       cy.get('#password').type("mind");
