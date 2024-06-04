@@ -43,7 +43,7 @@ Would like to run this project locally? Open terminal and follow these steps:
 
 1. Clone the repo
     ```sh
-    git clone https://github.com/liliiavint/48-registration-form-test.git
+    git clone https://github.com/liliiavint/registration-form-test.git
     ```
 2. Install NPM packages
     ```sh
