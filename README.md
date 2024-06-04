@@ -3,16 +3,16 @@
 ![Eco Status](https://img.shields.io/badge/ECO-Friendly-green.svg)
 
 
-# Testing registration form
+# Testing the registration form
 
-_project about testing e2e registration form_
+_project about testing e2e the registration form_
 
 <br>
 
 ## 🌟 About
 
 This project is for educational porpuses only. 
-In the studying process, I wrote tests that involve the use of browser automation to simulate the behavior of real users, effectively reproducing the steps a visitor can take when filling out a registration form.
+In the studying process, I wrote tests that involve the use of browser automation to simulate the behavior of real user, effectively reproducing the steps a visitor can take when filling out a registration form.
 Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
 Site published at: https://liliiavint.github.io/48-registration-form-test/
