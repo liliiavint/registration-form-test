@@ -68,7 +68,7 @@ export function RegistrationForm() {
 
     const isValidUsername = (username) => {
         if (!username.trim()) return 'Username is required.';
-        if (username.length > 25) return 'The text is too long, please write shorter!';
+        if (username.length > 15) return 'The text is too long, please write shorter!';
         if (/[^a-zA-Z]/.test(username)) return 'Username cannot contain numbers or special characters.';
         if (username === username.toUpperCase()) return 'Username cannot contain uppercase letter.';
         return true;

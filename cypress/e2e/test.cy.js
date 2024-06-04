@@ -99,19 +99,29 @@ describe('Registration with mistake', () => {
     });
 });
 
-  it('User is able name of registration form fills uppercase letters', () => {
-    cy.get('#username').type(names.toUpperCase());
-    cy.get('#email').type(email);
-    cy.get('#password').type("mind");
-    cy.get('#dob').type(dob);
-    cy.contains('button', 'Create your account').click(); 
+it('User is able name of registration form fills long name and short password', () => {
+  cy.get('#username').type(names.repeat(3));
+  cy.get('#email').type(email);
+  cy.get('#password').type("min");
+  cy.get('#dob').type(dob);
+  cy.contains('button', 'Create your account').click(); 
 
-    cy.get('#error').should('be.visible');
-    cy.get('#error h4').should('contain.text', 'There was a problem:');
-    cy.get('#error ul li:nth-child(1)').should('contain.text', 'Username cannot contain uppercase letter.' );
+  cy.get('#error').should('be.visible');
+  cy.get('#error h4').should('contain.text', 'There was a problem:');
+  cy.get('#error ul li:nth-child(1)').should('contain.text', 'The text is too long, please write shorter!' );
+  cy.get('#error ul li:nth-child(2)').should('contain.text', 'The password must be at least 4 characters.' );
+});
 
-  });
+it('The Invalid Date of Birth users.', () => {
+  cy.get('#username').type(names);
+  cy.get('#email').type(email);
+  cy.get('#password').type("mint");
+  cy.get('#dob').type("5000/06/01");
+  cy.contains('button', 'Create your account').click(); 
 
-  
+  cy.get('#error').should('be.visible');
+  cy.get('#error h4').should('contain.text', 'There was a problem:');
+  cy.get('#error ul li:nth-child(1)').should('contain.text', 'Invalid Date of Birth.' );
+});
 });
 
