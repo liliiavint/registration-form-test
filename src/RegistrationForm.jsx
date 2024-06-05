@@ -147,7 +147,7 @@ export function RegistrationForm() {
                         </div>
                         <div className={style.formRow}>
                             <label className={style.label} htmlFor="dob">Date of Birth:</label>
-                            <input className={style.input} type="text" pattern="\d{4}/\d{2}/\d{2}" placeholder="YYYY/MM/DD" name="dob" value={formData.dob} onChange={handleChange} id="dob" disabled={isSubmitted} />
+                            <input className={style.input} type="date" placeholder="YYYY/MM/DD" name="dob" value={formData.dob} onChange={handleChange} id="dob" disabled={isSubmitted} />
                         </div>
                         <div className={style.formRow}>
                             <button className={`${style.button} ${style.textButton}`} type="submit">Create your account</button>

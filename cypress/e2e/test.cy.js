@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 let names = "Mindaugas";
 let email = "mindaugas@mindaugas.com";
-let dob = "2000/06/01";
+let dob = "2000-06-01";
 let age = new Date().getFullYear() - new Date(dob).getFullYear(); 
 
 describe('visible component display', () => {
@@ -18,7 +18,7 @@ describe('visible component display', () => {
     ];
 
     labels.forEach(label => {
-      cy.contains("label", label).should("be.visible");
+      cy.contains("label", label).should("be.visible").and('not.be.disabled');
     });
   })
 
@@ -32,10 +32,10 @@ describe('visible component display', () => {
     inputs.forEach(input => {
       cy.get(input)
         .should("be.visible")
-        .and("have.value", "");
+        .and("have.value", "")
+        .and('not.be.disabled');
     });
   });
-
   
   it('should have specific input placeholders visible', () => {
     cy.get('input[placeholder="First and last name"]').should('be.visible');
@@ -43,12 +43,10 @@ describe('visible component display', () => {
   });
 
   it('displays button "Create your account"', () => {
-    const element = cy.contains("button", /Create your account/i)
-
+    const element = cy.contains("button", /Create your account/i);
     element.should("be.visible")
   })
   });
-
 
   describe('Successful registration', () => {
 
@@ -72,8 +70,7 @@ describe('visible component display', () => {
 
 });
 
-
-describe('Registration with mistake', () => {
+describe('Filling and checking the registration form with the incorrect values', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:5173/')
@@ -112,17 +109,25 @@ it('User is able name of registration form fills long name and short password', 
   cy.get('#error ul li:nth-child(2)').should('contain.text', 'The password must be at least 4 characters.' );
 });
 
+it('User is able to register with password containing special characters', () => {
+  cy.get('#username').type(names);
+  cy.get('#email').type(email);
+  cy.get('#password').type("password!"); 
+  cy.get('#dob').type(dob);
+  cy.contains('button', 'Create your account').click();
+
+  cy.get('#successful').should('be.visible');  
+});
+
 it('The Invalid Date of Birth users.', () => {
   cy.get('#username').type(names);
   cy.get('#email').type(email);
   cy.get('#password').type("mint");
-  cy.get('#dob').type("5000/06/01");
+  cy.get('#dob').type("2024-06-19");
   cy.contains('button', 'Create your account').click(); 
 
   cy.get('#error').should('be.visible');
   cy.get('#error h4').should('contain.text', 'There was a problem:');
   cy.get('#error ul li:nth-child(1)').should('contain.text', 'Invalid Date of Birth.' );
 });
-
 });
-
