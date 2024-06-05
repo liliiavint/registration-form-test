@@ -1,17 +1,9 @@
 /* eslint-disable no-undef */
-let names = "Mindaugas";
+let names = "test";
 let email = "mindaugas@mindaugas.com";
 let dob = "2000-06-01";
 let password = "mind";
-let age = new Date().getFullYear() - new Date(dob).getFullYear(); 
-
-function fillRegistrationForm(username, email, password, dob) {
-  cy.get('#username').type(username);
-  cy.get('#email').type(email);
-  cy.get('#password').type(password, {log:false}); //vengia šios įvesties registravimo, kad užtikrintų duomenų saugumą
-  cy.get('#dob').type(dob);
-  cy.contains('button', 'Create your account').click(); 
-}
+let age = 34; 
 
 describe('visible component display', () => {
   beforeEach(() => {
@@ -52,18 +44,14 @@ describe('visible component display', () => {
   });
 
   it('displays button "Create your account"', () => {
-    const element = cy.contains("button", /Create your account/i);
-    element.should("be.visible")
+    cy.contains("button", /Create your account/i).should("be.visible")
   })
   });
 
 describe('Successful registration', () => {
-    beforeEach(() => {
-      cy.visit('http://localhost:5173/')
-    })
-  
+ 
     it('User is able to fill registration form and seeing a successful message', () => {
-      fillRegistrationForm(names, email, password, dob);
+      cy.fillRegistrationForm(names, email, password, dob);
 
       cy.get('#successful').should('be.visible');
       cy.get('#successful h4').should('contain.text', 'Your data has been successfully registered:');
@@ -99,25 +87,24 @@ describe('Filling and checking the registration form with the incorrect values',
 });
 
 it('User is able name of registration form fills long name and short password', () => {
-  fillRegistrationForm(names.repeat(3), email, password.slice(1), dob);
+  cy.fillRegistrationForm(names.repeat(10), email, password.slice(1), dob);
 
   cy.get('#error').should('be.visible');
-  cy.get('#error h4').should('contain.text', 'There was a problem:');
-  cy.get('#error ul li:nth-child(1)').should('contain.text', 'The text is too long, please write shorter!' );
-  cy.get('#error ul li:nth-child(2)').should('contain.text', 'The password must be at least 4 characters.' );
+  cy.contains('#error h4', 'There was a problem:');
+  cy.contains('#error ul li:nth-child(1)', 'The text is too long, please write shorter!' );
+  cy.contains('#error ul li:nth-child(2)', 'The password must be at least 4 characters.' );
 });
 
 it('User is able to register with password containing special characters', () => {
-  fillRegistrationForm(names, email, password + "!", dob);
-
+  cy.fillRegistrationForm(names, email, password + "!", dob);
   cy.get('#successful').should('be.visible');  
 });
 
 it('The Invalid Date of Birth users.', () => {
-  fillRegistrationForm(names, email, password, "2024-06-17");
+  cy.fillRegistrationForm(names, email, password, "2024-06-17");
 
   cy.get('#error').should('be.visible');
-  cy.get('#error h4').should('contain.text', 'There was a problem:');
-  cy.get('#error ul li:nth-child(1)').should('contain.text', 'Invalid Date of Birth.' );
+  cy.contains('#error h4', 'There was a problem:');
+  cy.contains('#error ul li:nth-child(1)', 'Invalid Date of Birth.' );
 });
 });

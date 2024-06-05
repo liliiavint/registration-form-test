@@ -65,10 +65,30 @@
 .red{
   color: #c40000;
 }
+.green{
+  color: #137754;
+}
 .redTitle{
   color: #c40000;
   line-height: 1rem;
   font-size: 1rem;
+}
+.greenTitle{
+  color: #1bb57f;
+  line-height: 1rem;
+  font-size: 1rem;
+}
+.successful{
+  display: flex;
+  height: 8rem;
+  padding: 1.5rem;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px #ddd solid;
+  background-color: #fff;
+  gap: 2rem;
+  border: 2px #256e47 solid;
 }
 .error{
   display: flex;

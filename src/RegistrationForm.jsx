@@ -117,12 +117,12 @@ export function RegistrationForm() {
                 )}
                 {/* Entered Data */}
                 {isSubmitted && Object.keys(errors).length === 0 && (
-                    <div className={style.error}>
+                    <div className={style.successful}>
                         <div>
-                            <i className={style.red}><FaCheck size="3rem" /></i>
+                            <i className={style.green}><FaCheck size="3rem" /></i>
                         </div>
                         <div id="successful">
-                            <h4 className={style.redTitle}>Your data has been successfully registered:</h4>
+                            <h4 className={style.greenTitle}>Your data has been successfully registered:</h4>
                             <ul>
                                 {formData.username && <li className={style.errorLi}><strong>Username:</strong> {formData.username}</li>}
                                 {formData.email && <li className={style.errorLi}><strong>Email:</strong> {formData.email}</li>}

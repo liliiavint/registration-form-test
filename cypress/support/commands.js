@@ -1,3 +1,15 @@
+/* eslint-disable no-undef */
+Cypress.Commands.add('fillRegistrationForm', (username, email, password, dob) => {
+    cy.get('#username').type(username);
+    cy.get('#email').type(email);
+    cy.get('#password').type(password, { log: false }); 
+    cy.get('#dob').type(dob);
+    cy.contains('button', 'Create your account').click(); 
+  });
+  
+  beforeEach(() => {
+    cy.visit('http://localhost:5173/')
+  });
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
