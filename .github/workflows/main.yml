@@ -16,26 +16,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: '16' 
+          node-version: '16'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  
 
-      - name: Run Vite
-        run: npm run dev
+      - name: Build with Vite (assuming build command is 'build')
+        run: npm run build  
 
-      - name: Start Vite server
-        run: npm run preview &
+      - name: Start Vite server in background
+        run: npm run dev &  
         env:
-          CI: true
+          CI: true  
 
       - name: Wait for Vite server to start
         run: npx wait-on http://localhost:5173
 
       - name: Run Cypress tests
-        run: npm run cypress:run
+        run: npm run cypress:run  
         env:
-          CYPRESS_BASE_URL: http://localhost:5173
+          CYPRESS_BASE_URL: http://localhost:5173  
