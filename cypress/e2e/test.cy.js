@@ -2,7 +2,16 @@
 let names = "Mindaugas";
 let email = "mindaugas@mindaugas.com";
 let dob = "2000-06-01";
+let password = "mind";
 let age = new Date().getFullYear() - new Date(dob).getFullYear(); 
+
+function fillRegistrationForm(username, email, password, dob) {
+  cy.get('#username').type(username);
+  cy.get('#email').type(email);
+  cy.get('#password').type(password);
+  cy.get('#dob').type(dob);
+  cy.contains('button', 'Create your account').click(); 
+}
 
 describe('visible component display', () => {
   beforeEach(() => {
@@ -55,11 +64,7 @@ describe('visible component display', () => {
     })
   
     it('User is able to fill registration form and seeing a successful message', () => {
-      cy.get('#username').type(names);
-      cy.get('#email').type(email);
-      cy.get('#password').type("mind");
-      cy.get('#dob').type(dob);
-      cy.contains('button', 'Create your account').click(); 
+      fillRegistrationForm(names, email, password, dob);
 
       cy.get('#successful').should('be.visible');
       cy.get('#successful h4').should('contain.text', 'Your data has been successfully registered:');
@@ -97,11 +102,7 @@ describe('Filling and checking the registration form with the incorrect values',
 });
 
 it('User is able name of registration form fills long name and short password', () => {
-  cy.get('#username').type(names.repeat(3));
-  cy.get('#email').type(email);
-  cy.get('#password').type("min");
-  cy.get('#dob').type(dob);
-  cy.contains('button', 'Create your account').click(); 
+  fillRegistrationForm(names.repeat(3), email, password.slice(1), dob);
 
   cy.get('#error').should('be.visible');
   cy.get('#error h4').should('contain.text', 'There was a problem:');
@@ -110,21 +111,13 @@ it('User is able name of registration form fills long name and short password', 
 });
 
 it('User is able to register with password containing special characters', () => {
-  cy.get('#username').type(names);
-  cy.get('#email').type(email);
-  cy.get('#password').type("password!"); 
-  cy.get('#dob').type(dob);
-  cy.contains('button', 'Create your account').click();
+  fillRegistrationForm(names, email, password + "!", dob);
 
   cy.get('#successful').should('be.visible');  
 });
 
 it('The Invalid Date of Birth users.', () => {
-  cy.get('#username').type(names);
-  cy.get('#email').type(email);
-  cy.get('#password').type("mint");
-  cy.get('#dob').type("2024-06-19");
-  cy.contains('button', 'Create your account').click(); 
+  fillRegistrationForm(names, email, password, "2024-06-17");
 
   cy.get('#error').should('be.visible');
   cy.get('#error h4').should('contain.text', 'There was a problem:');
