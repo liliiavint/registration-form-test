@@ -8,7 +8,7 @@ let age = new Date().getFullYear() - new Date(dob).getFullYear();
 function fillRegistrationForm(username, email, password, dob) {
   cy.get('#username').type(username);
   cy.get('#email').type(email);
-  cy.get('#password').type(password);
+  cy.get('#password').type(password, {log:false}); //vengia šios įvesties registravimo, kad užtikrintų duomenų saugumą
   cy.get('#dob').type(dob);
   cy.contains('button', 'Create your account').click(); 
 }
@@ -57,8 +57,7 @@ describe('visible component display', () => {
   })
   });
 
-  describe('Successful registration', () => {
-
+describe('Successful registration', () => {
     beforeEach(() => {
       cy.visit('http://localhost:5173/')
     })
@@ -72,11 +71,9 @@ describe('visible component display', () => {
       cy.get('#successful ul li:nth-child(2)').should('contain.text', 'Email:', email); 
       cy.get('#successful ul li:nth-child(3)').should('contain.text', 'Age:', age); 
   });
-
 });
 
 describe('Filling and checking the registration form with the incorrect values', () => {
-
   beforeEach(() => {
     cy.visit('http://localhost:5173/')
   });
