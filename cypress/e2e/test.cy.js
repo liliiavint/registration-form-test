@@ -76,13 +76,11 @@ describe('Filling and checking the registration form with the incorrect values',
 
     cy.get('#error').should('be.visible');
 
-    cy.get('#error h4').should('contain.text', 'There was a problem:');
-    cy.get('#error ul li').should(($li) => {
-        expect($li).to.have.length(4);  
-        expect($li.eq(0)).to.contain.text('Username is required.');
-        expect($li.eq(1)).to.contain.text('Email is required.');
-        expect($li.eq(2)).to.contain.text('Password is required.');
-        expect($li.eq(3)).to.contain.text('Date of Birth is required.');
+    cy.contains('#error h4', 'There was a problem:');
+    cy.contains('#error ul li:nth-child(1)', 'Username is required.');
+    cy.contains('#error ul li:nth-child(2)', 'Email is required.');
+    cy.contains('#error ul li:nth-child(3)', 'Password is required.');
+    cy.contains('#error ul li:nth-child(4)', 'Date of Birth is required.');
     });
 });
 
@@ -106,5 +104,4 @@ it('The Invalid Date of Birth users.', () => {
   cy.get('#error').should('be.visible');
   cy.contains('#error h4', 'There was a problem:');
   cy.contains('#error ul li:nth-child(1)', 'Invalid Date of Birth.' );
-});
 });
